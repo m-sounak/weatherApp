@@ -1,0 +1,11 @@
+Part 1
+
+djangp-admin startproject weather
+python manage.py startapp weatherApp
+
+Changes to settings.py 
+Added the weatherApp app 
+Added static files
+
+Changes to weather.urls.py 
+Added the url for weatherApp
