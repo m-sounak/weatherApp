@@ -19,5 +19,5 @@ def index(request):
             "humidity"
             "main"
             "description"
-            "icon"
+            "icon" 
         }
