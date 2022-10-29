@@ -13,11 +13,11 @@ def index(request):
 
         data = {
             "countryCode" : str(listOfData['sys']['country']),
-            "coordinate" : 
-            "temp"
-            "pressure"
-            "humidity"
-            "main"
-            "description"
-            "icon" 
+            "coordinate" : str(listOfData['coord']['lat']) + ", " + str(listOfData['coord']['lon']),
+            "temp" : str(listOfData['main']['temp'] - 273),
+            "pressure" : str(listOfData['main']['pressure']),
+            "humidity" : str(listOfData['main']['humidity']),
+            "main" : str(listOfData['weather'][0]['main']),
+            "description" : str(listOfData['weather'][0]['description']),
+            "icon" : str(listOfData['weather'][0]['icon'])
         }
