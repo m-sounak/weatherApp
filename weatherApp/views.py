@@ -19,5 +19,10 @@ def index(request):
             "humidity" : str(listOfData['main']['humidity']),
             "main" : str(listOfData['weather'][0]['main']),
             "description" : str(listOfData['weather'][0]['description']),
-            "icon" : str(listOfData['weather'][0]['icon'])
+            "icon" : listOfData['weather'][0]['icon'], 
         }
+        print(data)
+    else:
+        data = {}
+
+    return render(request, "main/index.html", data)
