@@ -10,3 +10,5 @@ Added the url for weatherApp
 
 Masked the secret keys in settings.py using .env file
 Used .gitignore for .env file 
+
+Work on the index.html 
