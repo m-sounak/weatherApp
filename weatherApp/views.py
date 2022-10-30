@@ -6,18 +6,26 @@ import json
 
 def index(request):
     if request.method == 'POST':
-        city = request.POST['city']
-        source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=2d10e43f69b199b2fade9f3bfe1ad387').read()
+        try:
+            city = request.POST['city']
+            source = urllib.request.urlopen('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=metric&appid=2d10e43f69b199b2fade9f3bfe1ad387').read()
 
-        listOfData = json.loads(source)
+            listOfData = json.loads(source)
 
-        data = {
-            "countryCode" : str(listOfData['sys']['country']),
-            "coordinate" : 
-            "temp"
-            "pressure"
-            "humidity"
-            "main"
-            "description"
-            "icon" 
-        }
+            data = {
+                "countryCode" : str(listOfData['sys']['country']),
+                "coordinate" : str(listOfData['coord']['lat']) + ", " + str(listOfData['coord']['lon']),
+                "temp" : str(listOfData['main']['temp'] - 273),
+                "pressure" : str(listOfData['main']['pressure']),
+                "humidity" : str(listOfData['main']['humidity']),
+                "main" : str(listOfData['weather'][0]['main']),
+                "description" : str(listOfData['weather'][0]['description']),
+                "icon" : listOfData['weather'][0]['icon'], 
+            }
+            print(data)
+        except:
+            data = {}
+    else:
+        data = {}
+
+    return render(request, "main/index.html", data)
